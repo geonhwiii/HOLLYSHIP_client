@@ -37,7 +37,7 @@ export default class MypagePosts extends Component<Props, State> {
     const number = total.map(item => item.id);
 
     const request = await axios.delete(`${PREFIX_URL}/post/${number}`);
-    this.renderId = setTimeout(this.getPostTitle.bind(this), 500);
+    // this.renderId = setTimeout(this.getPostTitle.bind(this), 500);
   };
 
   render() {

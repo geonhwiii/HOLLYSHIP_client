@@ -9,8 +9,6 @@ import {
   Icon,
 } from 'react-native-ui-kitten';
 
-
-
 import { Icon as EleIcon } from 'react-native-elements';
 import Start from './StartScreen';
 import Join from './JoinScreen';
@@ -117,6 +115,7 @@ export class BottomNavigationShowcase extends React.Component<Props, State> {
           style={styles.tab}
           titleStyle={styles.tabTitle}
           title="MyPage"
+          
           icon={myPageIcon}
         />
       </BottomNavigation>
@@ -140,8 +139,8 @@ const TabNavigator = createBottomTabNavigator(
 const Total = createSwitchNavigator(
   {
     Splash,
-    App: TabNavigator,
     Auth: AuthStack,
+    App: TabNavigator,
   },
   { initialRouteName: 'Splash' }
 );

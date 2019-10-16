@@ -16,7 +16,16 @@ export default class MypageFollowers extends Component {
 
   componentDidMount() {
     this.getFollowers();
-    // this.getUserImage();
+    this.getImage();
+  }
+
+   getImage = async () => {
+    try {
+      const response = await axios.get(`${PREFIX_URL}/user`)
+      console.log('image' , response.data)
+    }catch (err) {
+      console.log(err)
+    }
   }
 
   getFollowers = async () => {

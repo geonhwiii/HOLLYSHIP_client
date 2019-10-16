@@ -123,6 +123,7 @@ export default class LoginScreen extends Component<Props, State> {
                 autoCorrect={false}
                 caption={isValidInputEmail ? 'Correct' : 'ID를 입력해주세요'}
                 onChangeText={input => this.setState({ email: input })}
+                type="email"
               />
               <Input
                 style={styles.textForm}
