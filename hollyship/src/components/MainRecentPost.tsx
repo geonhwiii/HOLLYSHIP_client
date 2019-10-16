@@ -37,6 +37,8 @@ export default class MainRecentPost extends Component<State> {
     refreshing: false,
   };
 
+  reRender;
+
   // TODO: MAKE BUTTON ACC
   buttonAccessory = style => (
     <Button
@@ -76,6 +78,7 @@ export default class MainRecentPost extends Component<State> {
         emotion: '',
       },
     });
+    // this.reRender = setTimeout(this.getPosts.bind(this), 1000);
   };
 
   componentDidMount = () => {
@@ -87,7 +90,7 @@ export default class MainRecentPost extends Component<State> {
       case 'happy':
         return '😃';
       case 'chill':
-        return '🥶';
+        return '😱';
       case 'sad':
         return '😭';
       case 'angry':

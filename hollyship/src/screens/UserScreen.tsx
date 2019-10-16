@@ -107,6 +107,7 @@ export default class UserScreen extends Component<Props, State> {
       allowsEditing: true,
       aspect: [4, 3],
     });
+    console.log('[여기 1]', result);
     if (!result.cancelled) {
       const data = new FormData();
       data.append('photo', {
@@ -114,14 +115,21 @@ export default class UserScreen extends Component<Props, State> {
         name: result.uri.split('/').pop(),
         type: result.type,
       });
-
+      console.log('DATA : ', data);
       // TODO: Upload UserImage to AWS S3 Bucket
-      const res = await axios.post(`${PREFIX_URL}/user/upload`, data, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
+      try {
+        const res = await axios.post(`${PREFIX_URL}/user/upload`, data, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+      } catch (err) {
+        console.log(err);
+      }
+
       const userImage = res.data.file;
+      console.log('[res] : ', res);
+      console.log('[UserImage] : ', userImage);
 
       this.setState({ ...this.state, userImage });
       // TODO: Change UserImage in User Info
@@ -168,7 +176,7 @@ export default class UserScreen extends Component<Props, State> {
         ...this.state,
         postingNumber: response.data.posts.length,
       });
-      this.intervalId3 = setTimeout(this.postingConter.bind(this), 1000);
+      // this.intervalId3 = setTimeout(this.postingConter.bind(this), 1000);
     } catch (err) {
       console.log(err);
     }
@@ -184,7 +192,7 @@ export default class UserScreen extends Component<Props, State> {
         ...this.state,
         followNumber: response.data.length,
       });
-      this.intervalId = setTimeout(this.followCounter.bind(this), 1000);
+      // this.intervalId = setTimeout(this.followCounter.bind(this), 1000);
     } catch (err) {
       console.log(err);
     }
@@ -198,7 +206,7 @@ export default class UserScreen extends Component<Props, State> {
       this.setState({
         followingCounter: response.data.length,
       });
-      this.intervalId2 = setTimeout(this.followingCounter.bind(this), 1000);
+      // this.intervalId2 = setTimeout(this.followingCounter.bind(this), 1000);
     } catch (err) {
       console.log(err);
     }

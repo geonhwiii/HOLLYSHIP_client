@@ -25,6 +25,10 @@ export const CommentList = props => {
     }
   };
 
+  useEffect(() => {
+    handleLike;
+  });
+
   const likedStyle = idx => {
     if (likedMusics.indexOf(idx) > -1) {
       return 'white';
